@@ -42,6 +42,7 @@ public class BookInfoForUpdate extends HttpServlet {
 		request.setAttribute("category", book.getCategory());
 		request.setAttribute("remain", book.getRemain());
 		request.setAttribute("saledNum", book.getSaledNum());
+		request.setAttribute("imageUrl", book.getImgUrl());
 
 		ServletContext context =getServletContext();
 		RequestDispatcher dispatcher = context.getRequestDispatcher("/update.jsp");

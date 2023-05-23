@@ -56,7 +56,8 @@ public class BookDAO{
 				String category = resultSet.getString("category");
 				int remain = resultSet.getInt("remain");
 				int saledNum = resultSet.getInt("saledNum");
-				Book book = new Book(id, title, author, writtenDate, company, price, category, remain, saledNum);
+				String imgUrl = resultSet.getString("imgUrl");
+				Book book = new Book(id, title, author, writtenDate, company, price, category, remain, saledNum,imgUrl);
 				returnValue.add(book);
 			}
 			conn.close();
@@ -93,7 +94,8 @@ public class BookDAO{
 				String category = rs.getString("category");
 				int remain = rs.getInt("remain");
 				int saledNum = rs.getInt("saledNum");
-				Book book = new Book(id, title, author, writtenDate, company, price, category, remain, saledNum);
+				String imgUrl = rs.getString("imgUrl");
+				Book book = new Book(id, title, author, writtenDate, company, price, category, remain, saledNum,imgUrl);
 				returnValue.add(book);
 			}
 			conn.close();
@@ -210,7 +212,8 @@ public class BookDAO{
 				String category = rs.getString("category");
 				int remain = rs.getInt("remain");
 				int saledNum = rs.getInt("saledNum");			
-				book = new Book(id, title, author, writtenDate, company, price, category, remain, saledNum);
+				String imgUrl = rs.getString("imgUrl");
+				book = new Book(id, title, author, writtenDate, company, price, category, remain, saledNum,imgUrl);
 				conn.close();
 				rs.close();
 				ps.close();
@@ -247,7 +250,8 @@ public class BookDAO{
 						rs.getInt("price"),
 						rs.getString("category"),
 						rs.getInt("remain"),
-						rs.getInt("saledNum")
+						rs.getInt("saledNum"),
+						rs.getString("imgUrl")
 						);
 				bookList.add(currentBook);
 			}

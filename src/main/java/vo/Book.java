@@ -11,10 +11,11 @@ public class Book {
 	private String category;
 	private int remain;
 	private int saledNum;
+	private String imgUrl;
 	
 	
 	public Book(int id, String title, String author, Date writtenDate, String company, int price, String category,
-			int remain, int saledNum) {
+			int remain, int saledNum, String imgUrl) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -25,6 +26,7 @@ public class Book {
 		this.category = category;
 		this.remain = remain;
 		this.saledNum = saledNum;
+		this.imgUrl = imgUrl;
 	}
 	
 	public int getId() {
@@ -81,7 +83,12 @@ public class Book {
 	public void setSaledNum(int saledNum) {
 		this.saledNum = saledNum;
 	}
-	
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
 	
 
 }

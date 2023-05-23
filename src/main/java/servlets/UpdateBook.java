@@ -43,8 +43,9 @@ public class UpdateBook extends HttpServlet {
 		String category = request.getParameter("category");
 		int remain = Integer.parseInt(request.getParameter("remain"));
 		int saledNum = Integer.parseInt(request.getParameter("saledNum"));
+		String imgUrl = request.getParameter("imgUrl");
 		
-		Book book = new Book(id, title, author, writtenDate, company, price, category, remain, saledNum); 
+		Book book = new Book(id, title, author, writtenDate, company, price, category, remain, saledNum,imgUrl); 
 		bookDao.updateBook(book);
 		
 		response.sendRedirect("main");

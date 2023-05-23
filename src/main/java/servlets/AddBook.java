@@ -32,9 +32,10 @@ public class AddBook extends HttpServlet {
 		String category = request.getParameter("category");
 		int remain = Integer.parseInt(request.getParameter("remain"));
 		int saledNum = Integer.parseInt(request.getParameter("saledNum"));
+		String imgUrl = request.getParameter("imgUrl");
 		System.out.println(category);
 
-		Book book = new Book(-1, title, author, writtenDate, company, price, category, remain, saledNum); 
+		Book book = new Book(-1, title, author, writtenDate, company, price, category, remain, saledNum, imgUrl); 
 		
 		BookDAO bookDao = new BookDAO();
 		bookDao.addBook(book);
