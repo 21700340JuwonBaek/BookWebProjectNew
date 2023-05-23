@@ -75,6 +75,16 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>updateGetInfo</servlet-name>
+		<servlet-class>servlets.BookInfoForUpdate</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>updateGetInfo</servlet-name>
+		<url-pattern>/updateGetInfo</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>delete</servlet-name>
 		<servlet-class>servlets.DeleteBook</servlet-class>
 	</servlet>

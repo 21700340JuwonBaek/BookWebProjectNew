@@ -188,17 +188,21 @@ public class BookDAO{
 	
 	//id로 책 가져오기(책 id)
 	public Book getBookById(int id) {
+		System.out.println("getBookById"+id);
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String query = "SELECT * FROM book WHERE id=?";
 		Book book = null;
 		try {
+			conn = connDB();
 			ps = conn.prepareStatement(query);
+			System.out.println(ps);
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				String title = rs.getString("title"); 
+				System.out.println(title);
 				String author = rs.getString("author");
 				Date writtenDate = rs.getDate("writtenDate");
 				String company = rs.getString("company");

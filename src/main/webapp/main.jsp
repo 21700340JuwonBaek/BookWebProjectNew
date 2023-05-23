@@ -93,6 +93,8 @@ h3 {
 	<ul>
 		<li><a href="addBook.html">도서 추가</a></li>
 		<li><a href="getAllBooks">전체 조회</a></li>
+		<li><a href="updateGetInfo?id=2">업데이트2번</a></li>
+		<li><a href="delete?id=2">삭제2번</a></li>
 
 	</ul>
 	<h3>이달의 도서</h3>

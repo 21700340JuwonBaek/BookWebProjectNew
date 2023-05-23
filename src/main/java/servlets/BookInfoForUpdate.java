@@ -25,8 +25,27 @@ public class BookInfoForUpdate extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+		request.setCharacterEncoding("UTF8");
+		response.setContentType("text/html;charset=utf8");
+		System.out.println("UPDATE GET INFO");
+		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println(id);
+		BookDAO bookDAO = new BookDAO();
+		Book book = bookDAO.getBookById(id);
+		System.out.println(book.getTitle());
+		request.setAttribute("id", id);
+		request.setAttribute("title", book.getTitle());
+		request.setAttribute("author", book.getAuthor());
+		request.setAttribute("writtenDate", book.getWrittenDate());
+		request.setAttribute("company", book.getCompany());
+		request.setAttribute("price", book.getPrice());
+		request.setAttribute("category", book.getCategory());
+		request.setAttribute("remain", book.getRemain());
+		request.setAttribute("saledNum", book.getSaledNum());
+
+		ServletContext context =getServletContext();
+		RequestDispatcher dispatcher = context.getRequestDispatcher("/update.jsp");
+		dispatcher.forward(request, response);	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,7 +66,7 @@ public class BookInfoForUpdate extends HttpServlet {
 		request.setAttribute("saledNum", book.getSaledNum());
 
 		ServletContext context =getServletContext();
-		RequestDispatcher dispatcher = context.getRequestDispatcher("updateBook.jsp");
+		RequestDispatcher dispatcher = context.getRequestDispatcher("/update.html");
 		dispatcher.forward(request, response);
 		
 	}
