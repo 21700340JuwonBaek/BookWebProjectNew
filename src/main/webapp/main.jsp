@@ -78,7 +78,7 @@ h3 {
 	<div class="container">
 		<div class="row justify-content-center">
 			<!-- 가운데 정렬을 위한 justify-content-center 클래스 추가 -->
-			<form method="post" name="search" action="searchbbs.jsp">
+			<form method="post" name="search" action="search">
 				<table>
 					<tr class="jumbotron text-center">
 						<td><input type="text" class="form-control"
@@ -92,7 +92,7 @@ h3 {
 
 	<ul>
 		<li><a href="addBook.html">도서 추가</a></li>
-		<li><a href="viewAll.jsp">전체 조회</a></li>
+		<li><a href="getAllBooks">전체 조회</a></li>
 
 	</ul>
 	<h3>이달의 도서</h3>

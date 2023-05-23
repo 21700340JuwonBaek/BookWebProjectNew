@@ -31,14 +31,21 @@ public class SearchServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String titleOrAuthor = request.getParameter("titleOrAuthor");
+		System.out.println("Search Servlet");
+		request.setCharacterEncoding("UTF8");
+		response.setContentType("text/html;charset=utf8");
+		String titleOrAuthor = request.getParameter("searchText");
 		BookDAO bookDao = new BookDAO();
 		
 		List<Book> searchedBook = bookDao.searchBookByTitleOrAuthor(titleOrAuthor);
-		request.setAttribute("searchedBook", searchedBook);
-		ServletContext context =getServletContext();
-		RequestDispatcher dispatcher = context.getRequestDispatcher("searched.jsp");
-		dispatcher.forward(request, response);
+		System.out.println(searchedBook.size());
+		for(Book book : searchedBook) {
+			System.out.println(book.getTitle());
+		}
+//		request.setAttribute("searchedBook", searchedBook);
+//		ServletContext context =getServletContext();
+//		RequestDispatcher dispatcher = context.getRequestDispatcher("/searched.jsp");
+//		dispatcher.forward(request, response);
 		
 		
 	}

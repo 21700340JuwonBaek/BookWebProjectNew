@@ -226,6 +226,7 @@ public class BookDAO{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String query = "SELECT * FROM book WHERE title like '%"+titleOrAuthor+"%' or author like '%"+titleOrAuthor+"%'";
+		System.out.println(query);
 		List<Book> bookList = new LinkedList<>();
 		try {
 			conn = connDB();

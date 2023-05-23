@@ -26,11 +26,17 @@ public class GetAllBook extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF8");
+		response.setContentType("text/html;charset=utf8");
 		BookDAO bookDao = new BookDAO();
 		List<Book> bookList = bookDao.getAllBook();
 		request.setAttribute("bookList", bookList);
 		ServletContext context =getServletContext();
-		RequestDispatcher dispatcher = context.getRequestDispatcher("viewAll.jsp");
+		for(Book book : bookList) {
+			System.out.println(book.getTitle());
+		}
+		System.out.println("GetAllBook!");
+		RequestDispatcher dispatcher = context.getRequestDispatcher("/viewAll.jsp");
 		dispatcher.forward(request, response);
 	}
 

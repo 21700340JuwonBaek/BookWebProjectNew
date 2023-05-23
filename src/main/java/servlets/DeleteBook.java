@@ -21,6 +21,8 @@ public class DeleteBook extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF8");
+		response.setContentType("text/html;charset=utf8");
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		BookDAO bookDao = new BookDAO();
