@@ -29,7 +29,7 @@
 	<div class="container">
 		<%
 			@SuppressWarnings("unchecked")
-			List<Book> bookList = (List<Book>)request.getAttribute("bookList");
+			List<Book> bookList = (List<Book>)request.getAttribute("searchedBook");
 			for(Book book : bookList) {
 		%>
 		<div class="row">

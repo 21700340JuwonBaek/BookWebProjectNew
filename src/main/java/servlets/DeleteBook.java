@@ -11,34 +11,34 @@ import dao.BookDAO;
 
 @WebServlet("/DeleteBook")
 public class DeleteBook extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
 
 
-	public DeleteBook() {
-		super();
-	}
+   public DeleteBook() {
+      super();
+   }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF8");
-		response.setContentType("text/html;charset=utf8");
-		int id = Integer.parseInt(request.getParameter("id"));
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      request.setCharacterEncoding("UTF8");
+      response.setContentType("text/html;charset=utf8");
+      int id = Integer.parseInt(request.getParameter("id"));
 
-		BookDAO bookDao = new BookDAO();
-		bookDao.deleteBookById(id);
+      BookDAO bookDao = new BookDAO();
+      bookDao.deleteBookById(id);
 
-		response.sendRedirect("main");
-	}
+      response.sendRedirect("main");
+   }
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF8");
-		response.setContentType("text/html;charset=utf8");
-		int id = Integer.parseInt(request.getParameter("id"));
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      request.setCharacterEncoding("UTF8");
+      response.setContentType("text/html;charset=utf8");
+      int id = Integer.parseInt(request.getParameter("id"));
 
-		BookDAO bookDao = new BookDAO();
-		bookDao.deleteBookById(id);
+      BookDAO bookDao = new BookDAO();
+      bookDao.deleteBookById(id);
 
-		response.sendRedirect("main");
-	}
+      response.sendRedirect("main");
+   }
 
 }

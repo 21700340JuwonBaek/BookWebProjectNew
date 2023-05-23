@@ -17,7 +17,7 @@ import vo.Book;
 
 @WebServlet("/Search")
 public class SearchServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
        
 
     public SearchServlet() {
@@ -25,29 +25,29 @@ public class SearchServlet extends HttpServlet {
     }
 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      response.getWriter().append("Served at: ").append(request.getContextPath());
+   }
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Search Servlet");
-		request.setCharacterEncoding("UTF8");
-		response.setContentType("text/html;charset=utf8");
-		String titleOrAuthor = request.getParameter("searchText");
-		BookDAO bookDao = new BookDAO();
-		
-		List<Book> searchedBook = bookDao.searchBookByTitleOrAuthor(titleOrAuthor);
-		System.out.println(searchedBook.size());
-		for(Book book : searchedBook) {
-			System.out.println(book.getTitle());
-		}
-//		request.setAttribute("searchedBook", searchedBook);
-//		ServletContext context =getServletContext();
-//		RequestDispatcher dispatcher = context.getRequestDispatcher("/searched.jsp");
-//		dispatcher.forward(request, response);
-		
-		
-	}
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      System.out.println("Search Servlet");
+      request.setCharacterEncoding("UTF8");
+      response.setContentType("text/html;charset=utf8");
+      String titleOrAuthor = request.getParameter("searchText");
+      BookDAO bookDao = new BookDAO();
+      
+      List<Book> searchedBook = bookDao.searchBookByTitleOrAuthor(titleOrAuthor);
+      System.out.println(searchedBook.size());
+      for(Book book : searchedBook) {
+         System.out.println(book.getTitle());
+      }
+      request.setAttribute("searchedBook", searchedBook);
+      ServletContext context =getServletContext();
+      RequestDispatcher dispatcher = context.getRequestDispatcher("/searched.jsp");
+      dispatcher.forward(request, response);
+      
+      
+   }
 
 }
