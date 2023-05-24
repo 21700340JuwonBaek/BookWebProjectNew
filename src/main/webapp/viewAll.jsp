@@ -58,8 +58,9 @@
 					class="btn btn-secondary" role="button">       수정 &raquo;</a>
 				<a href="delete?id=<%=book.getId()%>"
 					class="btn btn-secondary" role="button">       삭제 &raquo;</a>
-				<a href="buy?id=<%=book.getId()%>"
-					class="btn btn-secondary" role="button">       구매 &raquo;</a>
+
+				<a href="buy?id=<%=book.getId()%>&remainNum=<%=book.getRemain()%>&saledNum=<%=book.getSaledNum()%>"
+                class="btn btn-secondary" role="button">구매 &raquo;</a>
 			</div>
 		</div>
 		<%

@@ -35,7 +35,6 @@ public class Main extends HttpServlet {
 		List<Book> bestSellerList = bookDao.getBestSeller();
 		List<Book> allBook = bookDao.getAllBook();
 		System.out.println(allBook.size());
-
 		List<Book> randomBooks = new LinkedList();
 		
 		int count = 5;
@@ -51,7 +50,10 @@ public class Main extends HttpServlet {
 		}
 		
 		for(int i : randomNumSet) randomBooks.add(allBook.get(i));
+		for(Book book:randomBooks)System.out.println(book.getImgUrl() + "Random in Main servlet");
+
 		System.out.println("BestSeller:" + bestSellerList);
+		System.out.println("Random: "+ randomBooks);
 		request.setAttribute("bestSeller", bestSellerList);
 		request.setAttribute("randomBooks", randomBooks);
 		ServletContext context =getServletContext();

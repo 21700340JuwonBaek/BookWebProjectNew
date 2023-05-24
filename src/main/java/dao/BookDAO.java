@@ -267,6 +267,28 @@ public class BookDAO{
 
 	}
 	
+	public void buyBook(int id, int saledNum, int remainNum) {
+		Connection conn = connDB();
+		PreparedStatement ps = null;
+		String query = "UPDATE book set  remain = ?, saledNum = ? "
+				   + "WHERE ID = ?";
+		
+		try {
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, remainNum);
+			ps.setInt(2,saledNum);
+			ps.setInt(3,id);
+			ps.executeUpdate();
+			conn.close();
+			ps.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+
+		
+	}
+	
 	
 	
 

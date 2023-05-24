@@ -103,5 +103,15 @@
 		<servlet-name>detail</servlet-name>
 		<url-pattern>/detail</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>buy</servlet-name>
+		<servlet-class>servlets.Buy</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>buy</servlet-name>
+		<url-pattern>/buy</url-pattern>
+	</servlet-mapping>
 
 </web-app>

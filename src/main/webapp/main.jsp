@@ -1,139 +1,87 @@
+<%@page import="vo.Book"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%
+List<Book> randomBook = (List<Book>)request.getAttribute("randomBooks");
+
+List<Book> bestSeller = (List<Book>)request.getAttribute("bestSeller");
+for(Book book: randomBook) System.out.println(book.getImgUrl() + "Main Random");
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <title>Insert title here</title>
-<!-- Bootstrap CSS 파일 추가 -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 <style>
-.container {
-	margin-top: 50px;
-}
-
-.row {
-	margin: 10px;
-}
-.carousel-inner{
-	margin-top: 50px;
-}
-
-ul {
-	background-color: #FFDAB9;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	text-align: center; /* 가운데 정렬 추가 */
-}
-
-li {
-	display: inline-block; /* 가로로 정렬된 li 요소들 */
-	text-align: center;
-	margin-right: 100px; /* 일정한 오른쪽 간격 설정 */
-}
-
-li a {
-	display: block;
-	background-color: #FFDAB9;
-	color: #000000;
-	padding: 8px;
-	text-decoration: none;
-	text-align: center;
-	font-weight: bold;
-}
-
-li a:hover {
-	background-color: #CD853F;
-	color: white;
-}
-
-h3 {
-	color: #FF0000; /* 글자색을 빨간색으로 설정 */
-	font-size: 24px; /* 글자 크기를 24px로 설정 */
-	font-weight: bold; /* 글자를 굵게 설정 */
-	text-decoration: underline; /* 밑줄 효과 추가 */
-	text-align: center; /* 가운데 정렬 */
-	margin-bottom: 20px;
-}
-
-.im {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	width: 500px;
-	justify-content: center;
-	align-items: center;
+    .carousel-inner {
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 600px;
+    } 
+   
+  img {
+  object-fit: cover;
 }
 </style>
+
 <body>
-	<div class="container">
-		<div class="row justify-content-center">
-			<!-- 가운데 정렬을 위한 justify-content-center 클래스 추가 -->
-			<form method="post" name="search" action="search">
-				<table>
-					<tr class="jumbotron text-center">
-						<td><input type="text" class="form-control"
-							placeholder="검색어 입력" name="searchText" maxlength="100"></td>
-						<td><button type="submit" class="btn btn-success">검색</button></td>
-					</tr>
-				</table>
-			</form>
-		</div>
-	</div>
+<div class="jumbotron text-center">
+  <h1>책 관리 페이지</h1> 
 
-	<ul>
-		<li><a href="addBook.html">도서 추가</a></li>
-		<li><a href="getAllBooks">전체 조회</a></li>
-		<li><a href="updateGetInfo?id=2">업데이트2번</a></li>
-		<li><a href="delete?id=2">삭제2번</a></li>
-	</ul>
-	
-	<h3>이달의 도서</h3>
-	<div class="im">
-		<div id="carousel-example-generic" class="carousel slide">
-			<ol class="carousel-indicators">
-				<li data-target="#carousel-example-generic" data-slide-to="0"
-					class="active"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-			</ol>
-			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-					<!-- 아미지 설정- -->
-					<img
-						src="https://tistory2.daumcdn.net/tistory/1041549/skin/images/nowonbuntistory.png"
-						style="width: 100%">
-				</div>
-				<div class="item">
-					<img src="https://www.nowonbun.com/img/nowonbuntistory1.png"
-						style="width: 100%">
-				</div>
-			</div>
-			<a class="left carousel-control" href="#carousel-example-generic"
-				role="button" data-slide="prev"> <!-- 왼쪽 화살표 --> <span
-				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			</a> <a class="right carousel-control" href="#carousel-example-generic"
-				role="button" data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			</a>
-		</div>
-	</div>
+</div>
+<nav class="navbar navbar-light bg-light">
 
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link active" href="addBook.html">도서추가</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="getAllBooks">전체 조회</a>
+  </li>
+</ul>
+    <form class="form-inline" method="post" name="search" action="search">
+    <input class="form-control mr-sm-2"name="searchText" type="search" placeholder="Search" aria-label="Search" >
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  </nav>
+  
+  <div style="margin:40px;float: left;">
+  <h1>베스트셀러 Top 5</h1>
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="float: left">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="${bestSeller.get(0).getImgUrl()}" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="${bestSeller.get(1).getImgUrl()}" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="${bestSeller.get(2).getImgUrl()}" alt="Third slide">
+    </div>
+  </div>
+  </div>
+    </div>
+    <div style="float:left;margin:40px">
+    <h1>관리자의 랜덤추천</h1>
+<%
+  List<Book> bookList = (List<Book>) request.getAttribute("randomBooks");
+  for (Book book : bookList) {%>
+<div class="card" style="width: 12rem;float:left;margin:13px;">
+  <img class="card-img-top" src="<%=book.getImgUrl() %>" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text"><%=book.getTitle() %></p>
+  </div>
+</div>
+<%};
+%>
 
-	<!-- Bootstrap JS 파일 추가 -->
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
+
 </body>
 </html>
