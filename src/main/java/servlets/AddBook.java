@@ -40,7 +40,7 @@ public class AddBook extends HttpServlet {
 		BookDAO bookDao = new BookDAO();
 		bookDao.addBook(book);
 		
-		response.sendRedirect("main.jsp");	
+		response.sendRedirect("main");	
 	}
 
 }

@@ -27,19 +27,22 @@ public class Buy extends HttpServlet {
 	      int id = Integer.parseInt(request.getParameter("id"));
 	      int saledNum = Integer.parseInt(request.getParameter("saledNum"));
 	      int remainNum = Integer.parseInt(request.getParameter("remainNum"));
-	      
+	      System.out.println(remainNum + "여기는 buy서블렛 입니다.");
 	      if(remainNum == 0) {
 	    	  	PrintWriter printer = response.getWriter();
 				printer.println("<script>");
-				printer.println("alert('일치하지 않습니다.');");
+				printer.println("alert('재고가 없습니다.');");
 				printer.println("history.back(-1);");
 				printer.println("</script>");
+				return;
+	      }else {
+	      
+		      BookDAO bookDao = new BookDAO();
+		      bookDao.buyBook(id, saledNum+1, remainNum-1);
+		      
+		      response.sendRedirect("main");
 	      }
-	      
-	      BookDAO bookDao = new BookDAO();
-	      bookDao.buyBook(id, saledNum+1, remainNum-1);
-	      
-	      response.sendRedirect("main");
+	      System.out.println();
 	}
 
 

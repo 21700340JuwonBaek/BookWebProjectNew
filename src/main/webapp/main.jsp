@@ -3,10 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%
-List<Book> randomBook = (List<Book>)request.getAttribute("randomBooks");
-
 List<Book> bestSeller = (List<Book>)request.getAttribute("bestSeller");
-for(Book book: randomBook) System.out.println(book.getImgUrl() + "Main Random");
 %>
 <!DOCTYPE html>
 <html>

@@ -11,6 +11,7 @@ int price = (int)request.getAttribute("price");
 String category = (String)request.getAttribute("category"); 
 int remain = (int)request.getAttribute("remain"); 
 int saledNum = (int)request.getAttribute("saledNum"); 
+String imgUrl = (String)request.getAttribute("imgUrl"); 
 %>
 <!DOCTYPE html>
 <html>
@@ -79,6 +80,7 @@ a {
 			<input type="text" name="category" value="${category }" class="in">
 			<input type="text" name="remain" value="${remain }" class="in">
 			<input type="text" name="saledNum" value="${saledNum}" class="in">
+			<input type="text" name="imgUrl" value="${imgUrl}" class="in">
 			<input onclick="alert('도서 추가 성공');" type="submit" id="btn" value="추가"><br>
 		</form>
 	</div>
