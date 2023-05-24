@@ -16,6 +16,8 @@
    
    .row {
       background-color: #DCDCDC;
+      margin-bottom: 20px;
+      
    }
 </style>
 <title>도서 목록</title>
@@ -29,14 +31,14 @@
    <div class="container">
       <%
          @SuppressWarnings("unchecked")
-         List<Book> bookList = (List<Book>)request.getAttribute("searchedBook");
-         for(Book book : bookList) {
+         List<Book> bookSearchedList = (List<Book>)request.getAttribute("searchedBook");
+         for(Book book : bookSearchedList) {
       %>
       <div class="row">
          <div class="col-md-7">
-            <h3>
-               제목 : <%=book.getTitle()%>
-            </h3>            
+         	<img src="<%= book.getImgUrl() %>"
+						style="width: 50%; max-width: 150px; height: auto;">
+            <h3>제목 : <%=book.getTitle()%> </h3>            
             <p><%=book.getAuthor()%> | <%=book.getCompany()%> | <%=book.getPrice()%>원</p>
             <p>재고 : <%=book.getRemain()%>권  |  판매량 : <%=book.getSaledNum()%>권 </p>
          </div>

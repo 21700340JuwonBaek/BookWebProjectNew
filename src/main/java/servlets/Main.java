@@ -34,12 +34,14 @@ public class Main extends HttpServlet {
 		BookDAO bookDao = new BookDAO();
 		List<Book> bestSellerList = bookDao.getBestSeller();
 		List<Book> allBook = bookDao.getAllBook();
+		System.out.println(allBook.size());
+
 		List<Book> randomBooks = new LinkedList();
 		
 		int count = 5;
 		int[] randomNumSet = new int[count];
 		Random random = new Random();
-		
+		System.out.println(allBook.size());
 		for(int i = 0; i < count; i++) {
 			randomNumSet[i] = random.nextInt(allBook.size());
 			

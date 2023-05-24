@@ -93,5 +93,15 @@
 		<servlet-name>delete</servlet-name>
 		<url-pattern>/delete</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>detail</servlet-name>
+		<servlet-class>servlets.Detail</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>detail</servlet-name>
+		<url-pattern>/detail</url-pattern>
+	</servlet-mapping>
 
 </web-app>

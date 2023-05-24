@@ -25,6 +25,9 @@
 .row {
 	margin: 10px;
 }
+.carousel-inner{
+	margin-top: 50px;
+}
 
 ul {
 	background-color: #FFDAB9;
@@ -62,6 +65,7 @@ h3 {
 	font-weight: bold; /* 글자를 굵게 설정 */
 	text-decoration: underline; /* 밑줄 효과 추가 */
 	text-align: center; /* 가운데 정렬 */
+	margin-bottom: 20px;
 }
 
 .im {
